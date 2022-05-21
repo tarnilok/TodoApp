@@ -1,48 +1,57 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 
-export const getStaticProps = async () => {
-  const response = await fetch("http://localhost:3000/api/todos");
-  const data = await response.json();
-  
-  return {
-    props: { todos: data },
-  };
-};
+// export const getStaticProps = async () => {
+//   const response = await fetch("http://localhost:3000/api/todos");
+//   const data = await response.json();
 
-export default function Home({ todos }) {
+//   return {
+//     props: { todos: data },
+//   };
+// };
+
+export default function Home() {
+  const [todoItem, setTodoItem] = useState("");
+  const [todos, setTodos] = useState([])
   
-  const Submitter = async (e) => {
-    e.preventDefault()
-    const {title : {value: inputValue}} = e.target
-    const newTodo = {title: inputValue}
- 
-    const response = await fetch("/api/todos", {
-      method: "POST",
-      body: JSON.stringify(newTodo),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    // const data = await response.json()
-    // console.log(data)
+  useEffect(() => {
+    const ApiFetcher = async () => {
+      const response = await fetch("http://localhost:3000/api/todos");
+      const data = await response.json();
+      setTodos(data)
+    }
+    ApiFetcher()
+  }, [todoItem])
+
+  const todoAddHandler = async () => {
+    if (todoItem) {
+      const response = await fetch("/api/todos", {
+        method: "POST",
+        body: JSON.stringify({ title: todoItem }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setTodoItem("");
+    }
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Todo App</title>
         <meta name="description" content="A Todo App designed by WesterOps" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/Vector.svg" />
       </Head>
-      {todos.map((e) => (
-        <h1 key={e.id}>{e.title}</h1>
-      ))}
+<header></header>
+      {/* {todos.map(({ id, title }) => (
+        <h1 key={id}>{title}</h1>
+      ))} */}
       <section>
-        <form onSubmit={e => Submitter(e)}>
-          <input type="text" name="title" />
-          <button type="submit">Submit</button>
-        </form>
+        <input type="text" value={todoItem} onChange={(e) => setTodoItem(e.target.value)} />
+        <button type="button" onClick={todoAddHandler}>
+          Submit
+        </button>
       </section>
     </div>
   );
