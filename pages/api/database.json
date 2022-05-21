@@ -1,0 +1,70 @@
+{
+    "todos": [
+        {
+            "id": 1643718566727,
+            "title": "Example Todo 1",
+            "checked": true,
+            "pinned": false
+        },
+        {
+            "id": 1643718584922,
+            "title": "Example Todo 2",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1652861685792,
+            "title": "westerops example",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653162637634,
+            "title": "study nextjs",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653162677826,
+            "title": "work hardly",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653162844237,
+            "title": "watch movie with Okan",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653162924140,
+            "title": "play Vallorant with my son",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653165603468,
+            "title": "vbcxb",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653165723134,
+            "title": "okan",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653165755800,
+            "title": "vcxz",
+            "checked": false,
+            "pinned": false
+        },
+        {
+            "id": 1653166228312,
+            "title": "oldu mu",
+            "checked": false,
+            "pinned": false
+        }
+    ]
+}
