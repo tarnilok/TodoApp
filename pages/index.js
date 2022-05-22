@@ -32,17 +32,21 @@ import { successToastify, errorToastify } from "../toastify/toastify";
 export default function Home() {
   const [todoItem, setTodoItem] = useState("");
   const [todos, setTodos] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     ApiFetcher(setTodos);
-  }, [todoItem]);
+  }, [todoItem, isChecked]);
 
   const todoAddHandler = async () => {
     if (todoItem) {
-      const response = await ApiHandler("/api/todos", todoItem, "post");
-      console.log(response)
+      const data = { title: todoItem };
+      const response = await ApiHandler("/api/todos", data, "post");
       setTodoItem("");
-      response.status === 201 ? successToastify("work-to-do is created successfully🚀") : errorToastify("something went wrong🤷‍♂️ Please try again")
+      console.log(response.message);
+      response.status === 201
+        ? successToastify("work-to-do is created successfully🚀")
+        : errorToastify("something went wrong🤷‍♂️ Please try again");
     }
   };
 
@@ -78,13 +82,35 @@ export default function Home() {
           </button>
         </div>
         <div className="mt-[32px] pl-[33px] pr-[73px] h-[600px] max-h-[601px] overflow-auto scrollbar-hide">
-          <TodosRowContainer pinned={true} />
+          {todos
+            .filter((e) => e.pinned === true)
+            .map(({ id, title, pinned, checked }) => (
+              <div key={id}>
+                <TodosRowContainer
+                  pinned={pinned}
+                  title={title}
+                  ml={39}
+                  id={id}
+                  setIsChecked={setIsChecked}
+                  isChecked={isChecked}
+                  checked={checked}
+                />
+              </div>
+            ))}
+          {/* <TodosRowContainer pinned={true} /> */}
           <hr className="mt-[44px] mb-[14px] h-[1.5px] border-none bg-[#E5E5E5] ml-[72px] mr-[72px]" />
           {todos
             .filter((e) => e.pinned === false)
-            .map(({ id, title }) => (
+            .map(({ id, title, checked }) => (
               <div key={id}>
-                <TodosRowContainer title={title} ml={39} />
+                <TodosRowContainer
+                  title={title}
+                  ml={39}
+                  id={id}
+                  setIsChecked={setIsChecked}
+                  isChecked={isChecked}
+                  checked={checked}
+                />
               </div>
             ))}
         </div>
