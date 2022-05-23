@@ -17,11 +17,17 @@ import { successToastify, errorToastify } from "../toastify/toastify";
 //utils
 import { ApiHandler } from "../utils/ConnectApi";
 
-const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSwitcher}) => {
+const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSwitcher }) => {
   // eslint-disable-next-line react/display-name
   const CustomButton = forwardRef(({ open, ...props }, ref) => (
     <button className="flex" name="button" ref={ref} {...props}>
-      <Image src={threeDot} alt="threeDot-asset" width="20px" height="4px" className="hover:cursor-pointer " />
+      <Image
+        src={threeDot}
+        alt="threeDot-asset"
+        width="20px"
+        height="4px"
+        className="hover:cursor-pointer "
+      />
     </button>
   ));
 
@@ -43,11 +49,14 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
   };
 
   const Updater = async (todo) => {
-    inputRef.current.removeAttribute("disabled")
-    inputRef.current.focus()
-    inputRef.current.setAttribute("class", "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 border-[1.5px]")
-    setButtonSwitcher(true)
-  }
+    inputRef.current.removeAttribute("disabled");
+    inputRef.current.focus();
+    inputRef.current.setAttribute(
+      "class",
+      "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 border-[1.5px] md:text-[16px]"
+    );
+    setButtonSwitcher(true);
+  };
   return (
     <>
       <Popup
@@ -56,26 +65,43 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
         position={["bottom right", "top right", "top center"]}
         trigger={(open) => <CustomButton open={open} />}
       >
-        <div className="p-[18px]">
-          <div className="flex hover:bg-slate-100 py-1" onClick={() => Pinner(todo)}>
-            <Image src={unionBlack} alt="pin-black-asset" width="20.83px" />
-            <span className="grow text-[#010A1B] leading-[25px] text-[16px] tracking-[-0.015em] font-[400] ml-[10px] hover:cursor-pointer ">
-              {todo.pinned ? "Remove pinning" : "Pin on the top"}
-            </span>
+        {(close) => (
+          <div className="p-[18px]">
+            <div
+              className="flex hover:bg-slate-100 py-1"
+              onClick={() => {
+                Pinner(todo), close();
+              }}
+            >
+              <Image src={unionBlack} alt="pin-black-asset" width="20.83px" />
+              <span className="grow text-[#010A1B] leading-[25px] text-[16px] tracking-[-0.015em] font-[400] ml-[10px] hover:cursor-pointer ">
+                {todo.pinned ? "Remove pinning" : "Pin on the top"}
+              </span>
+            </div>
+            <div
+              className="flex hover:bg-slate-100 py-2 my-[10px]"
+              onClick={() => {
+                Updater(todo), close();
+              }}
+            >
+              <Image src={update} alt="update-asset" width="20.83px" />
+              <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] font-[400] ml-[11px] hover:cursor-pointer">
+                Update
+              </span>
+            </div>
+            <div
+              className="flex hover:bg-slate-100 py-2"
+              onClick={() => {
+                TodoEraser(todo), close();
+              }}
+            >
+              <Image src={trash} alt="trash-asset" width="20.83px" height="20.83px" />
+              <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] font-[400] ml-[11px] hover:cursor-pointer">
+                Delete
+              </span>
+            </div>
           </div>
-          <div className="flex hover:bg-slate-100 py-2 my-[10px]" onClick={() => Updater(todo)}>
-            <Image src={update} alt="update-asset" width="20.83px" />
-            <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] font-[400] ml-[11px] hover:cursor-pointer">
-              Update
-            </span>
-          </div>
-          <div className="flex hover:bg-slate-100 py-2" onClick={() => TodoEraser(todo)}>
-            <Image src={trash} alt="trash-asset" width="20.83px" height="20.83px" />
-            <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] font-[400] ml-[11px] hover:cursor-pointer">
-              Delete
-            </span>
-          </div>
-        </div>
+        )}
       </Popup>
     </>
   );

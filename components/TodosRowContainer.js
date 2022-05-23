@@ -33,7 +33,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
       inputRef.current.setAttribute("disabled", true);
       inputRef.current.setAttribute(
         "class",
-        "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600"
+        "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 md:text-[16px]"
       );
       setButtonSwitcher(false);
       response.status === 200
@@ -58,8 +58,8 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
         type="checkbox"
         className={
           ml
-            ? "w-[24px] h-[24px] ml-[41px] shrink-0 hover:cursor-pointer"
-            : "w-[24px] h-[24px] ml-[18px] shrink-0 hover:cursor-pointer"
+            ? "w-[24px] h-[24px] ml-[41px] shrink-0 hover:cursor-pointer mb:ml-[31px]"
+            : "w-[24px] h-[24px] ml-[18px] shrink-0 hover:cursor-pointer mb:ml-[8px]"
         }
         value={todo.checked}
         onChange={(e) => CheckboxTracker(e)}
@@ -67,7 +67,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
       <input
         type="text"
         defaultValue={todo.title}
-        className="text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600"
+        className="text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 md:text-[16px]"
         ref={inputRef}
         disabled
       />
