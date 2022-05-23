@@ -4,8 +4,11 @@ module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
+    fontFamily: {
+      "Inter" : ["Inter"]
+    },
     fontSize: {
-      xl: [
+      "xl": [
         "18px",
         {
           letterSpacing: "-0.015em",
