@@ -2,16 +2,16 @@ import React from "react";
 import Image from "next/image";
 
 //assets
-import w from "../public/w.svg";
-import e from "../public/e.svg";
-import s from "../public/s.svg";
-import t from "../public/t.svg";
-import r from "../public/r.svg";
-import oletter from "../public/oletter.svg";
-import p from "../public/p.svg";
-import logo1 from "../public/logo1.svg";
-import logo2 from "../public/logo2.svg";
-import logo3 from "../public/logo3.svg";
+import w from "../public/assets/w.svg";
+import e from "../public/assets/e.svg";
+import s from "../public/assets/s.svg";
+import t from "../public/assets/t.svg";
+import r from "../public/assets/r.svg";
+import oletter from "../public/assets/oletter.svg";
+import p from "../public/assets/p.svg";
+import logo1 from "../public/assets/logo1.svg";
+import logo2 from "../public/assets/logo2.svg";
+import logo3 from "../public/assets/logo3.svg";
 
 const Header = () => {
   return (

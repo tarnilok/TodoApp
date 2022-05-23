@@ -10,8 +10,8 @@ import Header from "../components/Header";
 import { ApiFetcher, ApiHandler } from "../utils/ConnectApi";
 
 //assets
-import stroke from "../public/stroke.svg";
-import arrow from "../public/arrow.svg";
+import stroke from "../public/assets/stroke.svg";
+import arrow from "../public/assets/arrow.svg";
 
 //library
 import { successToastify, errorToastify } from "../toastify/toastify";
@@ -28,9 +28,8 @@ export default function Home() {
   const todoAddHandler = async () => {
     if (todoItem) {
       const data = { title: todoItem };
-      const response = await ApiHandler("/api/todos", data, "post");
+      const response = await ApiHandler("/api/todos", data, "POST");
       setTodoItem("");
-      console.log(response.message);
       response.status === 201
         ? successToastify("work-to-do is created successfully🚀")
         : errorToastify("something went wrong🤷‍♂️ please try again");
@@ -45,8 +44,8 @@ export default function Home() {
         <link rel="icon" href="/logo3.svg" />
       </Head>
       <Header />
-      <section className="w-[718px] h-[800px] mt-[40px] bg-[#FFF] rounded-[8px] overflow-auto md:w-[600px] sm:w-[400px] sm:h-[75vh] mb:w-[350px] mb:h-auto">
-        <h2 className="text-center text-2xl text-[#194591] font-[600] mt-[17px] ">To Do List</h2>
+      <section className="w-[718px] h-[800px] mt-[40px] bg-[#FFF] rounded-[8px] border-[#E5E5E5] overflow-auto md:w-[600px] sm:w-[400px] sm:h-[75vh] mb:w-[350px] mb:h-auto">
+        <h2 className="text-center text-2xl text-[#194591] font-interSemiBold mt-[17px] ">To Do List</h2>
         <hr className="mt-[16px] h-[1.5px] border-none bg-[#E5E5E5]" />
         <div className="w-[148px] h-[4px] bg-[#FF7964] mt-[-3px] ml-auto mr-auto"></div>
         <div className="pl-[72px] pr-[63px] relative flex pt-[32px] sm:pl-[20px] sm:pr-[20px] sm:flex-col">
@@ -54,7 +53,7 @@ export default function Home() {
             type="text"
             value={todoItem}
             onChange={(e) => setTodoItem(e.target.value)}
-            className="pl-[57px] pr-[20px] py-[15px] w-[521px] h-[54px] text-xl placeholder-text-xl border-[1.5px] border-[#999C9F] rounded-[4px] focus:outline-none focus:border-blue-600 md:text-[16px] md:placeholder:-text-[16px] sm:w-auto sm:pr-[10px] sm:pl-[45px]"
+            className="pl-[57px] pr-[20px] py-[15px] w-[521px] h-[54px] text-xl font-interRegular text-[#010A1B] placeholder-text-xl border-[1.5px] border-[#999C9F] rounded-[4px] focus:outline-none focus:border-blue-600 md:text-[16px] md:placeholder:-text-[16px] sm:w-auto sm:pr-[10px] sm:pl-[45px]"
             placeholder="Add a task..."
           />
           <div className="absolute top-[49px] left-[91px] sm:left-[35px]">

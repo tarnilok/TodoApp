@@ -5,10 +5,10 @@ import Image from "next/image";
 import "reactjs-popup/dist/index.css";
 
 //assets
-import threeDot from "../public/threeDot.svg";
-import unionBlack from "../public/unionBlack.svg";
-import update from "../public/update.svg";
-import trash from "../public/trash.svg";
+import threeDot from "../public/assets/threeDot.svg";
+import unionBlack from "../public/assets/unionBlack.svg";
+import update from "../public/assets/update.svg";
+import trash from "../public/assets/trash.svg";
 
 //library
 import Popup from "reactjs-popup";
@@ -53,7 +53,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
     inputRef.current.focus();
     inputRef.current.setAttribute(
       "class",
-      "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 border-[1.5px] md:text-[16px]"
+      "text-xl font-interRegular text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 border-[1.5px] md:text-[16px]"
     );
     setButtonSwitcher(true);
   };
@@ -66,7 +66,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
         trigger={(open) => <CustomButton open={open} />}
       >
         {(close) => (
-          <div className="p-[18px]">
+          <div className="p-[18px] font-interRegular">
             <div
               className="flex hover:bg-slate-100 py-1"
               onClick={() => {
@@ -74,7 +74,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
               }}
             >
               <Image src={unionBlack} alt="pin-black-asset" width="20.83px" />
-              <span className="grow text-[#010A1B] leading-[25px] text-[16px] tracking-[-0.015em] font-[400] ml-[10px] hover:cursor-pointer ">
+              <span className="grow text-[#010A1B] leading-[25px] text-[16px] tracking-[-0.015em] ml-[10px] hover:cursor-pointer ">
                 {todo.pinned ? "Remove pinning" : "Pin on the top"}
               </span>
             </div>
@@ -85,7 +85,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
               }}
             >
               <Image src={update} alt="update-asset" width="20.83px" />
-              <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] font-[400] ml-[11px] hover:cursor-pointer">
+              <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] ml-[11px] hover:cursor-pointer">
                 Update
               </span>
             </div>
@@ -96,7 +96,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
               }}
             >
               <Image src={trash} alt="trash-asset" width="20.83px" height="20.83px" />
-              <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] font-[400] ml-[11px] hover:cursor-pointer">
+              <span className="grow text-[#010A1B] leading-[19px] text-[16px] tracking-[-0.015em] ml-[11px] hover:cursor-pointer">
                 Delete
               </span>
             </div>

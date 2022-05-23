@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 
 //assets
-import union from "../public/union.svg";
-import arrow from "../public/arrow.svg";
+import union from "../public/assets/union.svg";
+import arrow from "../public/assets/arrow.svg";
 
 //utils
 import { ApiHandler } from "../utils/ConnectApi";
@@ -33,7 +33,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
       inputRef.current.setAttribute("disabled", true);
       inputRef.current.setAttribute(
         "class",
-        "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 md:text-[16px]"
+        "text-xl text-[#010A1B] font-interRegular ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px] focus:outline-none focus:border-red-600 md:text-[16px]"
       );
       setButtonSwitcher(false);
       response.status === 200
@@ -52,7 +52,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
     );
   };
   return (
-    <div className="flex items-center mt-[20px] relative h-[32px]">
+    <div className="flex items-center mt-[20px] relative h-[32px] font-interRegular">
       {todo.pinned && <Image src={union} alt="union-asset" width="21px" />}
       <input
         type="checkbox"
@@ -67,7 +67,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
       <input
         type="text"
         defaultValue={todo.title}
-        className="text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 md:text-[16px]"
+        className="text-xl text-[#010A1B] font-interRegular ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600 md:text-[16px]"
         ref={inputRef}
         disabled
       />
