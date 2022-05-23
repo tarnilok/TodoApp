@@ -16,19 +16,6 @@ import arrow from "../public/arrow.svg";
 //library
 import { successToastify, errorToastify } from "../toastify/toastify";
 
-// export const getStaticProps = async () => {
-//   const response = await fetch("http://localhost:3000/api/todos");
-//   const data = await response.json();
-
-//   return {
-//     props: { todos: data },
-//   };
-// };
-
-{
-  /* appearance-none bg-[#fff] border-[1.5px] border-[#21A7F9] rounded-[6px] grid place-content-center after:absolute after-border-[#21A7F9] after:border-[1.5px] after:left-[9px] after:top-[5px] after:w-[5px] after:h-[10px]  */
-}
-
 export default function Home() {
   const [todoItem, setTodoItem] = useState("");
   const [todos, setTodos] = useState([]);
