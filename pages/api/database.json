@@ -1,134 +1,14 @@
 {
     "todos": [
         {
-            "id": 1643718566727,
-            "title": "Example Todo 1",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1643718584922,
-            "title": "Example Todo 2",
-            "checked": true,
-            "pinned": false
-        },
-        {
-            "id": 1652861685792,
-            "title": "westerops example",
-            "checked": true,
-            "pinned": false
-        },
-        {
-            "id": 1653162637634,
-            "title": "study nextjs",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653162677826,
-            "title": "work hardly",
-            "checked": false,
-            "pinned": false
-        },
-        {
             "id": 1653162844237,
             "title": "watch movie with Okan",
             "checked": false,
             "pinned": false
         },
         {
-            "id": 1653162924140,
-            "title": "play Vallorant with my son",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653165603468,
-            "title": "vbcxb",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653165723134,
-            "title": "okan",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653165755800,
-            "title": "vcxz",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653166228312,
-            "title": "oldu mu",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653168972085,
-            "title": ".",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169395834,
-            "title": "vahvah",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169558774,
-            "title": "fff",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169561898,
-            "title": "fff",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169659233,
-            "title": "aaa",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169723276,
-            "title": "tarık",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169848062,
-            "title": " ",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653169910850,
-            "title": "fdsaf",
-            "checked": false,
-            "pinned": false
-        },
-        {
             "id": 1653170670448,
             "title": "oldu mu",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653170703298,
-            "title": "jjjjj",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653175014002,
-            "title": "fffff",
             "checked": false,
             "pinned": false
         },
@@ -153,64 +33,6 @@
         {
             "id": 1653248828843,
             "title": "12321453543543",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653248995320,
-            "title": "eeeeeeeeeeeee",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653249029967,
-            "title": "rrrrrrrrrrrr",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653249907167,
-            "title": "hebele",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653249997788,
-            "title": "bıdıbıdı",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653250029920,
-            "title": "444444",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653253227799,
-            "title": "hhhh",
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653253421457,
-            "title": {
-                "title": "üüü"
-            },
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653253442353,
-            "title": {
-                "title": "jjjjj"
-            },
-            "checked": false,
-            "pinned": false
-        },
-        {
-            "id": 1653253557878,
-            "title": "asdasd",
             "checked": false,
             "pinned": false
         }

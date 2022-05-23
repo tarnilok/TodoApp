@@ -1,0 +1,29 @@
+/* .popup-content {
+    margin: auto;
+    background-color: rgba(255, 255, 253);
+    width: 50%;
+    padding: 3px;
+    color: red;
+    font-size: 11px;
+    font-family: Inter;
+    font-weight: 500;
+  }
+  
+  .popup-arrow {
+    color: rgba(255, 255, 253);
+  }
+  
+  [role='tooltip'].popup-content {
+    width: auto;
+    max-width: 165px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+    height: fit-content;
+  }
+  
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  [data-popup='tooltip'].popup-overlay {
+    background: transparent;
+  } */

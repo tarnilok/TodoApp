@@ -13,7 +13,7 @@ import { ApiFetcher, ApiHandler } from "../utils/ConnectApi";
 import stroke from "../public/stroke.svg";
 import arrow from "../public/arrow.svg";
 
-//toastify
+//library
 import { successToastify, errorToastify } from "../toastify/toastify";
 
 // export const getStaticProps = async () => {
@@ -32,11 +32,11 @@ import { successToastify, errorToastify } from "../toastify/toastify";
 export default function Home() {
   const [todoItem, setTodoItem] = useState("");
   const [todos, setTodos] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  const [fetchTrigger, setfetchTrigger] = useState(false);
 
   useEffect(() => {
     ApiFetcher(setTodos);
-  }, [todoItem, isChecked]);
+  }, [todoItem, fetchTrigger]);
 
   const todoAddHandler = async () => {
     if (todoItem) {
@@ -46,7 +46,7 @@ export default function Home() {
       console.log(response.message);
       response.status === 201
         ? successToastify("work-to-do is created successfully🚀")
-        : errorToastify("something went wrong🤷‍♂️ Please try again");
+        : errorToastify("something went wrong🤷‍♂️ please try again");
     }
   };
 
@@ -84,32 +84,26 @@ export default function Home() {
         <div className="mt-[32px] pl-[33px] pr-[73px] h-[600px] max-h-[601px] overflow-auto scrollbar-hide">
           {todos
             .filter((e) => e.pinned === true)
-            .map(({ id, title, pinned, checked }) => (
-              <div key={id}>
+            .map(todo => (
+              <div key={todo.id}>
                 <TodosRowContainer
-                  pinned={pinned}
-                  title={title}
+                  todo={todo}
                   ml={39}
-                  id={id}
-                  setIsChecked={setIsChecked}
-                  isChecked={isChecked}
-                  checked={checked}
+                  setfetchTrigger={setfetchTrigger}
+                  fetchTrigger={fetchTrigger}
                 />
               </div>
             ))}
-          {/* <TodosRowContainer pinned={true} /> */}
           <hr className="mt-[44px] mb-[14px] h-[1.5px] border-none bg-[#E5E5E5] ml-[72px] mr-[72px]" />
           {todos
             .filter((e) => e.pinned === false)
-            .map(({ id, title, checked }) => (
-              <div key={id}>
+            .map(todo => (
+              <div key={todo.id}>
                 <TodosRowContainer
-                  title={title}
+                  todo={todo}
                   ml={39}
-                  id={id}
-                  setIsChecked={setIsChecked}
-                  isChecked={isChecked}
-                  checked={checked}
+                  setfetchTrigger={setfetchTrigger}
+                  fetchTrigger={fetchTrigger}
                 />
               </div>
             ))}
