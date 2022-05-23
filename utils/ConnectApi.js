@@ -1,6 +1,6 @@
 export const ApiFetcher = async (setTodos) => {
   try {
-    const response = await fetch("http://localhost:3000/api/todos");
+    const response = await fetch("/api/todos");
     const data = await response.json();
     setTodos(data);
   } catch (error) {

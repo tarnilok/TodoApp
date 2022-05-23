@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
 //assets
 import union from "../public/union.svg";
+import arrow from "../public/arrow.svg";
 
 //utils
 import { ApiHandler } from "../utils/ConnectApi";
@@ -10,8 +11,13 @@ import { ApiHandler } from "../utils/ConnectApi";
 //componennts
 import PopupModal from "./PopupModal";
 
+//library
+import { successToastify, errorToastify } from "../toastify/toastify";
+
 const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
   const inputRef = useRef();
+  const [buttonSwitcher, setButtonSwitcher] = useState(false);
+
   const CheckboxTracker = async (e) => {
     const data = { checked: e.target.checked };
     await ApiHandler(`/api/todos/${todo.id}`, data, "PATCH");
@@ -19,8 +25,34 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
     inputRef.current.style.opacity = todo.checked ? "100%" : "40%";
     setfetchTrigger(!fetchTrigger);
   };
+
+  const ButtonContainer = () => {
+    const Updater = async () => {
+      const data = { title: inputRef.current.value };
+      const response = await ApiHandler(`/api/todos/${todo.id}`, data, "PATCH");
+      inputRef.current.setAttribute("disabled", true);
+      inputRef.current.setAttribute(
+        "class",
+        "text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600"
+      );
+      setButtonSwitcher(false);
+      response.status === 200
+        ? successToastify("updated👍")
+        : errorToastify("something went wrong🤷‍♂️ please try again");
+      setfetchTrigger(!fetchTrigger);
+    };
+    return (
+      <button
+        type="button"
+        className="bg-[#21A7F9] rounded-[4px] w-[20px] h-[20px] ml-[8px] absolute right-[40px]"
+        onClick={Updater}
+      >
+        <Image src={arrow} alt="arrow-asset" width="12px" />
+      </button>
+    );
+  };
   return (
-    <div className="flex mt-[32px]">
+    <div className="flex items-center mt-[20px] relative h-[32px]">
       {todo.pinned && <Image src={union} alt="union-asset" width="21px" />}
       <input
         type="checkbox"
@@ -34,12 +66,20 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
       />
       <input
         type="text"
-        value={todo.title}
-        className="text-xl font-[400] text-[#010A1B] ml-[16px] mr-[5px] grow disabled:bg-[#fff]"
+        defaultValue={todo.title}
+        className="text-xl font-[400] text-[#010A1B] ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px]  focus:outline-none focus:border-red-600"
         ref={inputRef}
         disabled
       />
-      <PopupModal todo={todo} setfetchTrigger={setfetchTrigger} fetchTrigger={fetchTrigger} />
+      {buttonSwitcher && <ButtonContainer />}
+
+      <PopupModal
+        todo={todo}
+        setfetchTrigger={setfetchTrigger}
+        fetchTrigger={fetchTrigger}
+        inputRef={inputRef}
+        setButtonSwitcher={setButtonSwitcher}
+      />
     </div>
   );
 };

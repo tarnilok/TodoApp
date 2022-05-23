@@ -55,7 +55,7 @@ export default function Home() {
       <Head>
         <title>Todo App</title>
         <meta name="description" content="A Todo App designed by WesterOps" />
-        <link rel="icon" href="/Vector.svg" />
+        <link rel="icon" href="/logo3.svg" />
       </Head>
       <Header />
       <section className="w-[718px] h-[800px] mt-[40px] bg-[#FFF] rounded-[8px] overflow-auto">
@@ -84,11 +84,10 @@ export default function Home() {
         <div className="mt-[32px] pl-[33px] pr-[73px] h-[600px] max-h-[601px] overflow-auto scrollbar-hide">
           {todos
             .filter((e) => e.pinned === true)
-            .map(todo => (
+            .map((todo) => (
               <div key={todo.id}>
                 <TodosRowContainer
                   todo={todo}
-                  ml={39}
                   setfetchTrigger={setfetchTrigger}
                   fetchTrigger={fetchTrigger}
                 />
@@ -97,7 +96,7 @@ export default function Home() {
           <hr className="mt-[44px] mb-[14px] h-[1.5px] border-none bg-[#E5E5E5] ml-[72px] mr-[72px]" />
           {todos
             .filter((e) => e.pinned === false)
-            .map(todo => (
+            .map((todo) => (
               <div key={todo.id}>
                 <TodosRowContainer
                   todo={todo}
