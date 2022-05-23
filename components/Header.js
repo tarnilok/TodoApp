@@ -7,7 +7,7 @@ import e from "../public/e.svg";
 import s from "../public/s.svg";
 import t from "../public/t.svg";
 import r from "../public/r.svg";
-import o from "../public/o.svg";
+import oletter from "../public/oletter.svg";
 import p from "../public/p.svg";
 import logo1 from "../public/logo1.svg";
 import logo2 from "../public/logo2.svg";
@@ -40,7 +40,7 @@ const Header = () => {
             <Image src={r} alt="westerops-letter-r" width="11.33px" />
           </div>
           <div className="absolute bottom-[-7px] left-[100px]">
-            <Image src={o} alt="westerops-letter-o" width="23.73px" />
+            <Image src={oletter} alt="westerops-letter-o" width="23.73px" />
           </div>
           <div className="absolute bottom-[-13px] left-[125px] ">
             <Image src={p} alt="westerops-letter-p" width="16.8px" />
