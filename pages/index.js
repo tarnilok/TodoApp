@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -20,9 +20,11 @@ export default function Home() {
   const [todoItem, setTodoItem] = useState("");
   const [todos, setTodos] = useState([]);
   const [fetchTrigger, setfetchTrigger] = useState(false);
+  const inputFocusRef = useRef()
 
   useEffect(() => {
     ApiFetcher(setTodos);
+    inputFocusRef.current.focus()
   }, [todoItem, fetchTrigger]);
 
   const todoAddHandler = async () => {
@@ -38,7 +40,6 @@ export default function Home() {
   };
 
   const handleKeyDown = (e) => {
-    // console.log(e.key === "Enter")
     if (e.key === "Enter") todoAddHandler()
   }
 
@@ -62,6 +63,7 @@ export default function Home() {
             className="pl-[57px] pr-[20px] py-[15px] w-[521px] h-[54px] text-xl font-interRegular text-[#010A1B] placeholder-text-xl border-[1.5px] border-[#999C9F] rounded-[4px] focus:outline-none focus:border-blue-600 md:text-[16px] md:placeholder:-text-[16px] sm:w-auto sm:pr-[10px] sm:pl-[45px]"
             placeholder="Add a task..."
             onKeyDown={e => handleKeyDown(e)}
+            ref={inputFocusRef}
           />
           <div className="absolute top-[49px] left-[91px] sm:left-[35px]">
             <Image src={stroke} alt="stroke-asset" width="18px" height="14px" />
