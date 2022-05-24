@@ -41,7 +41,7 @@ export default function Home() {
       <Head>
         <title>Todo App</title>
         <meta name="description" content="A Todo App designed by WesterOps" />
-        <link rel="icon" href="/logo3.svg" />
+        <link rel="icon" href="/assets/logo3.svg" />
       </Head>
       <Header />
       <section className="w-[718px] h-[800px] mt-[40px] bg-[#FFF] rounded-[8px] border-[#E5E5E5] overflow-auto md:w-[600px] sm:w-[400px] sm:h-[75vh] mb:w-[350px] mb:h-auto">
