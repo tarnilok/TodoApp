@@ -23,8 +23,8 @@ export default function Home() {
   const inputFocusRef = useRef()
 
   useEffect(() => {
-    ApiFetcher(setTodos);
     inputFocusRef.current.focus()
+    ApiFetcher(setTodos);
   }, [todoItem, fetchTrigger]);
 
   const todoAddHandler = async () => {
