@@ -29,6 +29,7 @@ export default function Home() {
     if (todoItem) {
       const data = { title: todoItem };
       const response = await ApiHandler("/api/todos", data, "POST");
+      console.log(response)
       setTodoItem("");
       response.status === 201
         ? successToastify("work-to-do is created successfully🚀")
