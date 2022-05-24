@@ -25,7 +25,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
         src={threeDot}
         alt="threeDot-asset"
         width="20px"
-        height="4px"
+        height="10px"
         className="hover:cursor-pointer "
       />
     </button>
