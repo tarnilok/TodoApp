@@ -14,7 +14,7 @@ import PopupModal from "./PopupModal";
 //library
 import { successToastify, errorToastify } from "../toastify/toastify";
 
-const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
+const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshData }) => {
   const inputRef = useRef();
   const [buttonSwitcher, setButtonSwitcher] = useState(false);
 
@@ -23,7 +23,8 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
     await ApiHandler(`/api/todos/${todo.id}`, data, "PATCH");
     inputRef.current.style.textDecorationLine = todo.checked ? "none" : "line-through";
     inputRef.current.style.opacity = todo.checked ? "100%" : "40%";
-    setfetchTrigger(!fetchTrigger);
+    // setfetchTrigger(!fetchTrigger);
+    refreshData();
   };
 
   const ButtonContainer = () => {
@@ -36,10 +37,16 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
         "text-xl text-[#010A1B] font-interRegular ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px] focus:outline-none focus:border-red-600 md:text-[16px]"
       );
       setButtonSwitcher(false);
-      response.status === 200
-        ? successToastify("updated👍")
-        : errorToastify("something went wrong🤷‍♂️ please try again");
-      setfetchTrigger(!fetchTrigger);
+      // response.status === 200
+      //   ? successToastify("updated👍")
+      //   : errorToastify("something went wrong🤷‍♂️ please try again");
+      // // setfetchTrigger(!fetchTrigger);
+      if (response.status < 300) {
+        refreshData();
+        successToastify("updated👍");
+      } else {
+        errorToastify("something went wrong🤷‍♂️ please try again");
+      }
     };
     return (
       <button
@@ -74,9 +81,11 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger }) => {
       {buttonSwitcher && <ButtonContainer />}
 
       <PopupModal
+      key={todo.id}
         todo={todo}
-        setfetchTrigger={setfetchTrigger}
-        fetchTrigger={fetchTrigger}
+        // setfetchTrigger={setfetchTrigger}
+        // fetchTrigger={fetchTrigger}
+        refreshData={refreshData}
         inputRef={inputRef}
         setButtonSwitcher={setButtonSwitcher}
       />
