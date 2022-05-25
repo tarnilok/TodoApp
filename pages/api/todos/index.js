@@ -8,7 +8,6 @@ export default function handler(req, res) {
       break;
     }
     case "POST": {
-      // console.log(req.body);
       let missingFields = [];
       if (!req.body.title) missingFields.push("title");
 

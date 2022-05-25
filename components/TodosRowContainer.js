@@ -14,7 +14,7 @@ import PopupModal from "./PopupModal";
 //library
 import { successToastify, errorToastify } from "../toastify/toastify";
 
-const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshData }) => {
+const TodosRowContainer = ({ todo, ml, refreshData }) => {
   const inputRef = useRef();
   const [buttonSwitcher, setButtonSwitcher] = useState(false);
 
@@ -23,7 +23,6 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshDat
     await ApiHandler(`/api/todos/${todo.id}`, data, "PATCH");
     inputRef.current.style.textDecorationLine = todo.checked ? "none" : "line-through";
     inputRef.current.style.opacity = todo.checked ? "100%" : "40%";
-    // setfetchTrigger(!fetchTrigger);
     refreshData();
   };
 
@@ -37,10 +36,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshDat
         "text-xl text-[#010A1B] font-interRegular ml-[11px] mr-[5px] grow disabled:bg-[#fff] py-[5px] px-[5px] rounded-[4px] focus:outline-none focus:border-red-600 md:text-[16px]"
       );
       setButtonSwitcher(false);
-      // response.status === 200
-      //   ? successToastify("updated👍")
-      //   : errorToastify("something went wrong🤷‍♂️ please try again");
-      // // setfetchTrigger(!fetchTrigger);
+
       if (response.status < 300) {
         refreshData();
         successToastify("updated👍");
@@ -49,6 +45,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshDat
       }
     };
     return (
+      {Updater},
       <button
         type="button"
         className="bg-[#21A7F9] rounded-[4px] w-[20px] h-[20px] ml-[8px] absolute right-[40px]"
@@ -58,6 +55,7 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshDat
       </button>
     );
   };
+
   return (
     <div className="flex items-center mt-[20px] relative h-[32px] font-interRegular">
       {todo.pinned && <Image src={union} alt="union-asset" width="21px" />}
@@ -83,8 +81,6 @@ const TodosRowContainer = ({ todo, ml, fetchTrigger, setfetchTrigger, refreshDat
       <PopupModal
       key={todo.id}
         todo={todo}
-        // setfetchTrigger={setfetchTrigger}
-        // fetchTrigger={fetchTrigger}
         refreshData={refreshData}
         inputRef={inputRef}
         setButtonSwitcher={setButtonSwitcher}

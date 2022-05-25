@@ -17,7 +17,7 @@ import { successToastify, errorToastify } from "../toastify/toastify";
 //utils
 import { ApiHandler } from "../utils/ConnectApi";
 
-const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSwitcher, refreshData }) => {
+const PopupModal = ({ todo, inputRef, setButtonSwitcher, refreshData }) => {
   // eslint-disable-next-line react/display-name
   const CustomButton = forwardRef(({ open, ...props }, ref) => (
     <button className="flex" name="button" ref={ref} {...props}>
@@ -33,10 +33,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
 
   const TodoEraser = async (todo) => {
     const response = await ApiHandler(`/api/todos/${todo.id}`, "", "DELETE");
-    // response.status === 200
-    //   ? successToastify("deleted🔥")
-    //   : errorToastify("something went wrong🤷‍♂️ please try again");
-    // // setfetchTrigger(!fetchTrigger);
+
     if (response.status < 300) {
       refreshData();
       successToastify("deleted👍");
@@ -48,10 +45,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
   const Pinner = async (todo) => {
     const data = { pinned: !todo.pinned };
     const response = await ApiHandler(`/api/todos/${todo.id}`, data, "PATCH");
-    // response.status === 200
-    //   ? successToastify("updated👍")
-    //   : errorToastify("something went wrong🤷‍♂️ please try again");
-    // // setfetchTrigger(!fetchTrigger);
+
     if (response.status < 300) {
       refreshData();
       successToastify("updated👍");

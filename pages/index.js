@@ -18,22 +18,13 @@ import arrow from "../public/assets/arrow.svg";
 import { successToastify, errorToastify } from "../toastify/toastify";
 
 export async function getServerSideProps() {
-  const path = process.env.END_POINT
-  const response = await fetch(path + "api/todos");
+  const response = await fetch(process.env.END_POINT + "api/todos");
   const todos = await response.json();
   return { props: { todos } };
 }
 
-// export const refreshData = () => {
-//   // eslint-disable-next-line react-hooks/rules-of-hooks
-//   const router = useRouter();
-//   router.replace(router.asPath);
-// };
-
 export default function Home({ todos }) {
   const [todoItem, setTodoItem] = useState("");
-  // const [todos, setTodos] = useState([]);
-  // const [fetchTrigger, setfetchTrigger] = useState(false);
   const inputFocusRef = useRef();
   const router = useRouter();
 
@@ -43,14 +34,12 @@ export default function Home({ todos }) {
 
   useEffect(() => {
     inputFocusRef.current.focus();
-    // ApiFetcher(setTodos);
   }, []);
 
   const todoAddHandler = async () => {
     if (todoItem) {
       const data = { title: todoItem };
       const response = await ApiHandler("/api/todos", data, "POST");
-      console.log(response);
       setTodoItem("");
       if (response.status < 300) {
         refreshData();
@@ -108,8 +97,6 @@ export default function Home({ todos }) {
                 <TodosRowContainer
                   todo={todo}
                   refreshData={refreshData}
-                  // setfetchTrigger={setfetchTrigger}
-                  // fetchTrigger={fetchTrigger}
                 />
               </div>
             ))}
@@ -122,8 +109,6 @@ export default function Home({ todos }) {
                   todo={todo}
                   ml={39}
                   refreshData={refreshData}
-                  // setfetchTrigger={setfetchTrigger}
-                  // fetchTrigger={fetchTrigger}
                 />
               </div>
             ))}
