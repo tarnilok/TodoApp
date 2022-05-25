@@ -39,7 +39,7 @@ const PopupModal = ({ todo, fetchTrigger, setfetchTrigger, inputRef, setButtonSw
     // // setfetchTrigger(!fetchTrigger);
     if (response.status < 300) {
       refreshData();
-      successToastify("updated👍");
+      successToastify("deleted👍");
     } else {
       errorToastify("something went wrong🤷‍♂️ please try again");
     }

@@ -18,7 +18,8 @@ import arrow from "../public/assets/arrow.svg";
 import { successToastify, errorToastify } from "../toastify/toastify";
 
 export async function getServerSideProps() {
-  const response = await fetch(`http://localhost:3000/api/todos`);
+  const path = process.env.END_POINT
+  const response = await fetch(path + "api/todos");
   const todos = await response.json();
   return { props: { todos } };
 }
